@@ -57,7 +57,7 @@ export class AppController {
     const newOrder = {
       nev: orderDto.nev,
       bankszamlaszam: orderDto.bankszamlaszam,
-      orderDto: orderDto.aszf_fogadva
+      aszf_fogadva: orderDto.aszf_fogadva
     }
 
     if (errors.length > 0) {
