@@ -44,10 +44,9 @@ export class AppController {
     if (!orderDto.nev || !orderDto.bankszamlaszam || !orderDto.aszf_fogadva) {
       errors.push("Minden mezőt meg kell adni!");
     }
-    if (orderDto.nev && !(/^[A-Za-z]$/.test(orderDto.nev))) {
+    if (orderDto.nev && !(/^[A-Za-z]+$/.test(orderDto.nev))) {
       errors.push("A név nem megfelelő formátumú!");
     }
-
     if (orderDto.bankszamlaszam) {
       if (!(/^\d{8}-\d{8}$/.test(orderDto.bankszamlaszam) || /^\d{8}-\d{8}-\d{8}$/.test(orderDto.bankszamlaszam))) {
         errors.push("A bankszámlaszám nem megfelelő formátumú!");
@@ -69,10 +68,10 @@ export class AppController {
 
 
     this.orders.push(newOrder);
-    response.redirect(303, 'Ordersuccess');
+    response.redirect(303, 'orderSuccess');
   }
 
-  @Get('OrderSuccess')
+  @Get('orderSuccess')
   @Render('success')
   orderSuccess() {
     return {
